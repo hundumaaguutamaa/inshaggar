@@ -1,0 +1,340 @@
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.header {
+    margin-bottom: 3rem;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.08) 0%, transparent 100%);
+    border-radius: var(--radius);
+    border: 1px solid hsl(var(--primary) / 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, hsl(var(--secondary) / 0.15), transparent 70%);
+    z-index: 0;
+}
+
+.header>* {
+    position: relative;
+    z-index: 1;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: hsl(var(--muted-foreground));
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s;
+    font-weight: 500;
+}
+
+.backLink:hover {
+    color: hsl(var(--foreground));
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.metaRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    color: hsl(var(--muted-foreground));
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+.metaItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.tabsContainer {
+    margin-bottom: 3rem;
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* Mobile-first tab improvements */
+.tabsHeader {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.25rem;
+    margin-bottom: 2rem;
+    padding: 0.25rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    border-bottom: 1px solid hsl(var(--muted));
+    background: hsl(var(--background));
+    position: sticky;
+    top: 72px; /* Account for header height */
+    z-index: 20;
+    /* Smooth scrolling on mobile */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.tabsHeader::-webkit-scrollbar {
+    display: none;
+}
+
+.tabButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 1rem 1.5rem;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: hsl(var(--muted-foreground));
+    font-weight: 700;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: -1px;
+    flex: 1;
+    min-width: 120px;
+    /* Better touch targets */
+    min-height: 56px;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Mobile-specific tab adjustments */
+@media (max-width: 767px) {
+    .tabsHeader {
+        top: 64px; /* Smaller header on mobile */
+        padding: 0.5rem;
+        gap: 0.5rem;
+    }
+    
+    .tabButton {
+        min-width: 100px;
+        padding: 0.875rem 1rem;
+        font-size: 0.875rem;
+        gap: 0.5rem;
+    }
+    
+    .tabButton svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+.tabButton:hover {
+    color: hsl(var(--foreground));
+    background: hsl(var(--muted) / 0.3);
+}
+
+.activeTab {
+    color: hsl(var(--primary));
+    border-bottom-color: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.05);
+}
+
+.section {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--muted));
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.05);
+}
+
+@media (min-width: 640px) {
+    .section {
+        padding: 3rem;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.stepList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.step {
+    display: flex;
+    gap: 1rem;
+}
+
+.stepNumber {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(160 80% 20%));
+    color: hsl(var(--primary-foreground));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px hsl(var(--primary) / 0.3);
+}
+
+.stepContent h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    color: hsl(var(--foreground));
+}
+
+.stepContent p {
+    color: hsl(var(--muted-foreground));
+    margin: 0;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.docGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.docCard {
+    background: hsl(var(--background));
+    border: 1px solid hsl(var(--muted));
+    padding: 1rem;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.docInfo h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+}
+
+.docInfo p {
+    font-size: 0.85rem;
+    color: hsl(var(--muted-foreground));
+    margin: 0;
+}
+
+.infoBox {
+    background: hsl(var(--secondary) / 0.1);
+    border: 1px solid hsl(var(--secondary) / 0.3);
+    color: hsl(var(--secondary-foreground));
+    padding: 1rem;
+    border-radius: var(--radius);
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.mistakeList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mistakeItem {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    align-items: flex-start;
+    color: hsl(var(--muted-foreground));
+}
+
+.locationCard {
+    border: 1px solid hsl(var(--muted));
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.locationHeader {
+    display: flex;
+    justify-content: region;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.locationTitle {
+    font-weight: 600;
+}
+
+.mapLink {
+    color: hsl(var(--primary));
+    font-size: 0.9rem;
+    text-decoration: underline;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    border-radius: 999px;
+    background: hsl(var(--muted));
+    color: hsl(var(--foreground));
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    border: 1px solid hsl(var(--muted-foreground) / 0.2);
+}
+
+.overview {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: hsl(var(--muted-foreground));
+    max-width: 80ch;
+}
+
+.primaryIcon {
+    color: hsl(var(--primary));
+}
+
+.secondaryIcon {
+    color: hsl(var(--secondary));
+}
+
+.destructiveIcon {
+    color: hsl(var(--destructive));
+}
+
+.docIcon {
+    color: hsl(var(--muted-foreground));
+}

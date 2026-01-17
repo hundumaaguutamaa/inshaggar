@@ -1,0 +1,105 @@
+.installPrompt {
+    position: fixed;
+    bottom: 90px; /* Above mobile navigation */
+    left: 1rem;
+    right: 1rem;
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    z-index: 1500;
+    animation: slideUp 0.3s ease-out;
+}
+
+.promptContent {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.promptText {
+    flex: 1;
+}
+
+.promptText h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: hsl(var(--foreground));
+    margin: 0 0 0.25rem 0;
+}
+
+.promptText p {
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+    margin: 0;
+    line-height: 1.4;
+}
+
+.promptActions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.installButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.installButton:hover,
+.installButton:active {
+    background: hsl(var(--primary) / 0.9);
+    transform: translateY(-1px);
+}
+
+.dismissButton {
+    background: hsl(var(--muted));
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: hsl(var(--muted-foreground));
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dismissButton:hover,
+.dismissButton:active {
+    background: hsl(var(--muted) / 0.7);
+    color: hsl(var(--foreground));
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Desktop adjustments */
+@media (min-width: 768px) {
+    .installPrompt {
+        bottom: 2rem;
+        left: auto;
+        right: 2rem;
+        max-width: 320px;
+    }
+}

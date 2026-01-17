@@ -1,0 +1,25 @@
+.printBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background-color: hsl(var(--card));
+    border: 1px solid hsl(var(--muted));
+    border-radius: var(--radius);
+    color: hsl(var(--foreground));
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.printBtn:hover {
+    background-color: hsl(var(--muted));
+    border-color: hsl(var(--muted-foreground));
+}
+
+@media print {
+    .printBtn {
+        display: none;
+    }
+}

@@ -1,0 +1,293 @@
+/* Mobile-first improvements */
+.checklistTrigger {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.checkButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    /* Better touch targets */
+    min-height: 56px;
+    box-shadow: 0 4px 12px hsl(var(--primary) / 0.25);
+}
+
+.checkButton:hover {
+    background: hsl(var(--primary) / 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px hsl(var(--primary) / 0.3);
+}
+
+/* Touch-specific improvements */
+@media (hover: none) and (pointer: coarse) {
+    .checkButton:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    
+    .checklistItem {
+        padding: 1.25rem;
+        border-radius: 12px;
+    }
+    
+    .checkboxCustom {
+        width: 24px;
+        height: 24px;
+        border-width: 2px;
+    }
+    
+    .itemLabel {
+        font-size: 1rem;
+    }
+    
+    .itemDescription {
+        font-size: 0.9rem;
+    }
+}
+
+.checkDescription {
+    margin-top: 0.5rem;
+    color: hsl(var(--muted-foreground));
+    font-size: 0.875rem;
+}
+
+.checklist {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.checklistHeader {
+    margin-bottom: 1.5rem;
+}
+
+.checklistHeader h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: hsl(var(--foreground));
+}
+
+.checklistHeader p {
+    color: hsl(var(--muted-foreground));
+    font-size: 0.875rem;
+}
+
+.checklistItems {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.checklistItem {
+    border: 1px solid hsl(var(--border));
+    border-radius: 8px;
+    padding: 1rem;
+    transition: all 0.2s ease;
+}
+
+.checklistItem:hover {
+    border-color: hsl(var(--primary) / 0.3);
+    background: hsl(var(--muted) / 0.3);
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    cursor: pointer;
+}
+
+.checkbox {
+    display: none;
+}
+
+.checkboxCustom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid hsl(var(--border));
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+    margin-top: 2px;
+}
+
+.checkbox:checked + .checkboxCustom {
+    background: hsl(var(--primary));
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+}
+
+.itemContent {
+    flex: 1;
+}
+
+.itemLabel {
+    display: block;
+    font-weight: 600;
+    color: hsl(var(--foreground));
+    margin-bottom: 0.25rem;
+}
+
+.required {
+    color: hsl(var(--destructive));
+    margin-left: 0.25rem;
+}
+
+.itemDescription {
+    display: block;
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+}
+
+.result {
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.ready {
+    background: hsl(142 76% 36% / 0.1);
+    border: 1px solid hsl(142 76% 36% / 0.3);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.readyIcon {
+    color: hsl(142 76% 36%);
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+}
+
+.ready h4 {
+    color: hsl(142 76% 36%);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.ready p {
+    color: hsl(var(--foreground));
+    margin-bottom: 1rem;
+}
+
+.tips {
+    font-size: 0.875rem;
+}
+
+.tips p {
+    margin-bottom: 0.5rem;
+    color: hsl(var(--muted-foreground));
+}
+
+.notReady {
+    background: hsl(var(--destructive) / 0.1);
+    border: 1px solid hsl(var(--destructive) / 0.3);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.notReadyIcon {
+    color: hsl(var(--destructive));
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+}
+
+.notReady h4 {
+    color: hsl(var(--destructive));
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.notReady p {
+    color: hsl(var(--foreground));
+    margin-bottom: 1rem;
+}
+
+.missingItems {
+    font-size: 0.875rem;
+}
+
+.missingItem {
+    color: hsl(var(--muted-foreground));
+    margin-bottom: 0.25rem;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.backButton {
+    background: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.backButton:hover {
+    background: hsl(var(--secondary) / 0.8);
+}
+
+.proceedButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.proceedButton:hover {
+    background: hsl(var(--primary) / 0.9);
+}
+
+@media (max-width: 768px) {
+    .checklist {
+        padding: 1.5rem;
+    }
+    
+    .actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .backButton,
+    .proceedButton {
+        width: 100%;
+        justify-content: center;
+    }
+}

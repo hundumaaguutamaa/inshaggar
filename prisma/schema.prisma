@@ -1,0 +1,113 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        String     @id @default(uuid())
+  email     String     @unique
+  password  String
+  name      String?
+  role      String     @default("EDITOR")
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  audits    AuditLog[]
+}
+
+
+
+model Procedure {
+  id                String             @id @default(uuid())
+  title             String
+  category          String
+  city              String             @default("Addis Ababa")
+  overview          String             @db.Text
+  eligibility       String             @db.Text
+  estimatedCost     String
+  estimatedDuration String
+  lastUpdated       DateTime           @updatedAt
+  status            String             @default("DRAFT")
+  
+  steps             Step[]
+  requiredDocuments RequiredDocument[]
+  commonMistakes    CommonMistake[]
+  officeLocations   OfficeLocation[]
+  sourceLinks       SourceLink[]
+  feedback          Feedback[]
+  
+  createdAt         DateTime           @default(now())
+}
+
+
+
+model Step {
+  id          String    @id @default(uuid())
+  procedureId String
+  procedure   Procedure @relation(fields: [procedureId], references: [id], onDelete: Cascade)
+  title       String
+  description String    @db.Text
+  order       Int
+}
+
+model RequiredDocument {
+  id          String    @id @default(uuid())
+  procedureId String
+  procedure   Procedure @relation(fields: [procedureId], references: [id], onDelete: Cascade)
+  name        String
+  type        String
+  count       Int       @default(1)
+  notes       String?
+}
+
+model CommonMistake {
+  id          String    @id @default(uuid())
+  procedureId String
+  procedure   Procedure @relation(fields: [procedureId], references: [id], onDelete: Cascade)
+  description String    @db.Text
+}
+
+model OfficeLocation {
+  id           String    @id @default(uuid())
+  procedureId  String
+  procedure    Procedure @relation(fields: [procedureId], references: [id], onDelete: Cascade)
+  name         String
+  subCity      String
+  woreda       String?
+  mapLink      String?
+  workingHours String?
+}
+
+model SourceLink {
+  id          String    @id @default(uuid())
+  procedureId String
+  procedure   Procedure @relation(fields: [procedureId], references: [id], onDelete: Cascade)
+  url         String
+  title       String
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  action    String
+  details   String?
+  createdAt DateTime @default(now())
+}
+
+model Feedback {
+  id              String    @id @default(uuid())
+  procedureId     String
+  procedure       Procedure @relation(fields: [procedureId], references: [id], onDelete: Cascade)
+  helpful         String    // 'yes', 'somewhat', 'no'
+  completed       String    // 'yes', 'not-yet'
+  city            String?
+  extraDocuments  String?
+  visits          String?
+  unclear         String?
+  createdAt       DateTime  @default(now())
+}

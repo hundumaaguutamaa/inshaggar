@@ -1,0 +1,175 @@
+.bannerContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Left decorative element - mobile first */
+.leftDecor {
+    position: absolute;
+    top: 10%;
+    left: -30px;
+    width: 60px;
+    height: 200px;
+    z-index: 1;
+}
+
+@media (min-width: 480px) {
+    .leftDecor {
+        left: -40px;
+        width: 80px;
+        height: 250px;
+    }
+}
+
+@media (min-width: 768px) {
+    .leftDecor {
+        left: -60px;
+        width: 120px;
+        height: 300px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .leftDecor {
+        left: -80px;
+        width: 160px;
+        height: 400px;
+    }
+}
+
+/* Right decorative element - mobile first */
+.rightDecor {
+    position: absolute;
+    top: 15%;
+    right: -30px;
+    width: 60px;
+    height: 200px;
+    z-index: 1;
+}
+
+@media (min-width: 480px) {
+    .rightDecor {
+        right: -40px;
+        width: 80px;
+        height: 250px;
+    }
+}
+
+@media (min-width: 768px) {
+    .rightDecor {
+        right: -60px;
+        width: 120px;
+        height: 300px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .rightDecor {
+        right: -80px;
+        width: 160px;
+        height: 400px;
+    }
+}
+
+.decorSvg {
+    width: 100%;
+    height: 100%;
+    filter: blur(0.5px);
+}
+
+@media (min-width: 768px) {
+    .decorSvg {
+        filter: blur(1px);
+    }
+}
+
+/* Background pattern */
+.backgroundPattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.patternDot {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: hsl(var(--primary) / 0.2);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+    .patternDot {
+        width: 6px;
+        height: 6px;
+    }
+}
+
+.patternDot:nth-child(1) {
+    top: 20%;
+    left: 15%;
+    animation-delay: 0s;
+}
+
+.patternDot:nth-child(2) {
+    top: 40%;
+    right: 20%;
+    animation-delay: 1s;
+}
+
+.patternDot:nth-child(3) {
+    top: 60%;
+    left: 25%;
+    animation-delay: 2s;
+}
+
+.patternDot:nth-child(4) {
+    top: 30%;
+    right: 30%;
+    animation-delay: 3s;
+}
+
+.patternDot:nth-child(5) {
+    top: 70%;
+    right: 15%;
+    animation-delay: 4s;
+}
+
+.patternDot:nth-child(6) {
+    top: 80%;
+    left: 35%;
+    animation-delay: 5s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.2;
+    }
+    50% {
+        transform: translateY(-10px) scale(1.1);
+        opacity: 0.4;
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .patternDot {
+        animation: none;
+    }
+    
+    .decorSvg {
+        filter: none;
+    }
+}

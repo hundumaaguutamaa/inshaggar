@@ -1,0 +1,198 @@
+/* Bottom Navigation */
+.bottomNav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-top: 1px solid var(--glass-border);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0.5rem 0;
+    z-index: 1000;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    color: hsl(var(--muted-foreground));
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-radius: 8px;
+    margin: 0 0.25rem;
+    min-height: 60px;
+    position: relative;
+}
+
+.navItem:hover,
+.navItem:active {
+    color: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.1);
+    transform: translateY(-2px);
+}
+
+.active {
+    color: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.1);
+}
+
+.active::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 3px;
+    background: hsl(var(--primary));
+    border-radius: 0 0 4px 4px;
+}
+
+.navLabel {
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-top: 0.25rem;
+    text-align: center;
+}
+
+.menuButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Menu Overlay */
+.menuOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    display: flex;
+    align-items: flex-end;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.menuContent {
+    background: hsl(var(--card));
+    border-radius: 20px 20px 0 0;
+    padding: 1.5rem;
+    width: 100%;
+    max-height: 70vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease-out;
+}
+
+.menuHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+.menuHeader h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: hsl(var(--foreground));
+    margin: 0;
+}
+
+.closeButton {
+    background: hsl(var(--muted));
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: hsl(var(--muted-foreground));
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+    background: hsl(var(--muted) / 0.7);
+    color: hsl(var(--foreground));
+}
+
+.menuItems {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.menuItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    color: hsl(var(--foreground));
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.menuItem:hover,
+.menuItem:active {
+    background: hsl(var(--muted) / 0.5);
+    transform: translateX(4px);
+}
+
+.menuItemActive {
+    background: hsl(var(--primary) / 0.1);
+    color: hsl(var(--primary));
+    font-weight: 600;
+}
+
+.menuFooter {
+    padding-top: 1rem;
+    border-top: 1px solid hsl(var(--border));
+}
+
+.appInfo {
+    font-size: 0.8rem;
+    color: hsl(var(--muted-foreground));
+    text-align: center;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Hide on desktop */
+@media (min-width: 768px) {
+    .bottomNav {
+        display: none;
+    }
+}
